@@ -10,9 +10,12 @@
     <string name="no_compersor">Please select a compresor</string>
     <string name="sending_error">Error sending url to server</string>
     <string name="invalid_url">Invalid url</string>
+    <string name="url">Url</string>
+    <string name="share">Share</string>
+    <string name="standard_protocol">http</string>
+    <string name="share_original">Original Url --> </string>
+    <string name="share_created">Compressed Url --> </string>
 
     <integer name="standard_port">8080</integer>
-
-    <string name="standard_protocol">http</string>
 
 </resources>

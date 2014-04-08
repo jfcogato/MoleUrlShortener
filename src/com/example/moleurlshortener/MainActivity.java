@@ -1,9 +1,6 @@
 package com.example.moleurlshortener;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.example.moleurlshortener.DAO.DataBasesAccess;
 import com.example.moleurlshortener.DAO.UrlObject;
@@ -13,14 +10,12 @@ import com.example.moleurlshortener.tools.ConstantKeys;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.text.format.DateUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.URLUtil;
@@ -28,7 +23,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -97,7 +95,6 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-
 	}
 
 	@Override
@@ -182,6 +179,46 @@ public class MainActivity extends Activity {
 		}.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 	}
 
+	public void createDialog(final String original, final String created) {
+
+		// custom dialog
+		final Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.url_dialog);
+		dialog.setTitle(getString(R.string.url));
+
+		TextView originalUrlTextView = (TextView) dialog
+				.findViewById(R.id.original_url);
+		TextView createdUrlTextView = (TextView) dialog
+				.findViewById(R.id.created_url);
+		Button shareButton = (Button) dialog.findViewById(R.id.share);
+
+		originalUrlTextView.setText(original);
+		createdUrlTextView.setText(created);
+
+		shareButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				shareUrls(original, created);
+				dialog.dismiss();
+			}
+		});
+		dialog.show();
+
+	}
+
+	private void shareUrls(String original, String created) {
+		String shareOriginal = this.getString(R.string.share_original)
+				+ original;
+		String shareCreated = this.getString(R.string.share_created) + created;
+
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		sendIntent.putExtra(Intent.EXTRA_TEXT, shareOriginal + "\n"
+				+ shareCreated);
+		sendIntent.setType("text/plain");
+		startActivity(sendIntent);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -189,4 +226,13 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO when we have more than one, we have to works with cases but for
+		// this demo is enought
+		DataBasesAccess.getInstance(MainActivity.this.getApplicationContext())
+				.deleteUrlDataBase();
+		createList();
+		return super.onOptionsItemSelected(item);
+	}
 }
