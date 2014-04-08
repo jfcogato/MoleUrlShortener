@@ -215,6 +215,8 @@ public class MainActivity extends Activity {
 		sendIntent.setAction(Intent.ACTION_SEND);
 		sendIntent.putExtra(Intent.EXTRA_TEXT, shareOriginal + "\n"
 				+ shareCreated);
+		sendIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+				getString(R.string.share_subject));
 		sendIntent.setType("text/plain");
 		startActivity(sendIntent);
 	}

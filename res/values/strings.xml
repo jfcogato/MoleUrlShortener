@@ -15,6 +15,7 @@
     <string name="standard_protocol">http</string>
     <string name="share_original">Original Url --> </string>
     <string name="share_created">Compressed Url --> </string>
+    <string name="share_subject">Shortened urls</string>
 
     <integer name="standard_port">8080</integer>
 
