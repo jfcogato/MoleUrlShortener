@@ -2,11 +2,13 @@
 <resources>
 
     <string name="app_name">MoleUrlShortener</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_delete_history">Delete history</string>
     <string name="enter_url">Type url:</string>
+    <string name="url_history">Url history:</string>
     <string name="sending_title">Creating url</string>
     <string name="sending_message">Please wait&#8230;</string>
     <string name="no_compersor">Please select a compresor</string>
+    <string name="sending_error">Error sending url to server</string>
 
     <integer name="standard_port">8080</integer>
 

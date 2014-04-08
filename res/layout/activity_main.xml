@@ -56,15 +56,23 @@
             android:src="@android:drawable/ic_menu_send" />
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/url_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/url_layout"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="@string/url_history" />
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/url_layout"
+        android:layout_below="@id/url_history"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:background="#882111" >
+        android:background="#33000000" >
 
         <ListView
-            android:id="@+id/listview"
+            android:id="@+id/list_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
         </ListView>

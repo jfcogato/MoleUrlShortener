@@ -1,9 +1,13 @@
 package com.example.moleurlshortener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.example.moleurlshortener.DAO.DataBasesAccess;
 import com.example.moleurlshortener.DAO.UrlObject;
+import com.example.moleurlshortener.adapters.UrlListAdapter;
 import com.example.moleurlshortener.connectionServices.HttpManager;
 import com.example.moleurlshortener.tools.ConstantKeys;
 
@@ -14,6 +18,8 @@ import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,11 +27,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	public int buttonSelected = ConstantKeys.NO_SELEDTED;
+
+	public ListView listView;
+	public UrlListAdapter adapter;
+	public ArrayList<UrlObject> ul;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,8 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				// TODO get resources this way, create a lot of memory leak
+				// create a function to get it correctly
 				moleButton.setImageResource(R.drawable.ic_mole_grey);
 				googleButton.setImageResource(R.drawable.ic_google);
 				buttonSelected = ConstantKeys.GOOGLE_URl;
@@ -53,6 +66,8 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				// TODO get resources this way, create a lot of memory leak
+				// create a function to get it correctly
 				moleButton.setImageResource(R.drawable.ic_mole);
 				googleButton.setImageResource(R.drawable.ic_google_grey);
 				buttonSelected = ConstantKeys.MOLE_URL;
@@ -75,6 +90,25 @@ public class MainActivity extends Activity {
 			}
 		});
 
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		createList();
+	}
+
+	private void createList() {
+		ul = DataBasesAccess.getInstance(getApplicationContext()).getUrls();
+		refreshAdapterData();
+	}
+
+	private void refreshAdapterData() {
+		// TODO to improve the list, we have to add the new urls not to
+		// re-create the adapter, but for this demo it's enought.
+		listView = (ListView) findViewById(R.id.list_view);
+		adapter = new UrlListAdapter(this, ul);
+		listView.setAdapter(adapter);
 	}
 
 	private void sendData(final String originalUrl, final int selected) {
@@ -105,8 +139,8 @@ public class MainActivity extends Activity {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				
-				//Sending message to the server to create the shorter url
+
+				// Sending message to the server to create the shorter url
 				UrlObject urlObjectReturned = HttpManager.SendUrl(
 						MainActivity.this.getApplicationContext(), url, type);
 
@@ -128,9 +162,12 @@ public class MainActivity extends Activity {
 				}
 
 				if (result != null) {
-
+					ul.add(result);
+					refreshAdapterData();
 				} else {
-
+					Toast.makeText(getApplicationContext(),
+							getString(R.string.sending_error),
+							Toast.LENGTH_SHORT).show();
 				}
 			}
 

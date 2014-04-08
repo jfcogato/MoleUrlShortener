@@ -20,21 +20,17 @@ public class UrlDataBaseAdapter {
 	public static final String KEY_ID = "_id";
 
 	// the name and column index of each column in your database
-	public static final String KEY_GROUP_ID = "url_id";
-	public static final int GROUP_ID_COLUMN = 1;
-
 	public static final String KEY_ORIGINAL_URl = "original_url";
-	public static final int ORIGINAL_URL_COLUMN = 2;
+	public static final int ORIGINAL_URL_COLUMN = 1;
 
 	public static final String KEY_CREATED_URL = "created_url";
-	public static final int CREATED_URL_COLUMN = 3;
+	public static final int CREATED_URL_COLUMN = 2;
 
 	// SQL statemen to create a new dabase.
 	private static final String DATABASE_CREATE = "create table "
 			+ DATABASE_TABLE + " (" + KEY_ID
-			+ " integer privamry key autoincremente, " + KEY_GROUP_ID
-			+ " text not null, " + KEY_ORIGINAL_URl + " text not null, "
-			+ KEY_CREATED_URL + " text not null" + ");";
+			+ " integer privamry key autoincremente, " + KEY_ORIGINAL_URl
+			+ " text not null, " + KEY_CREATED_URL + " text not null" + ");";
 
 	private SQLiteDatabase db;
 	private final Context context;
@@ -58,7 +54,8 @@ public class UrlDataBaseAdapter {
 	public int insertEntry(UrlObject urlobject) {
 		int index = 0;
 
-		String strFilter = KEY_CREATED_URL + "=" + "\"" + urlobject.getCreatedUrl() + "\"";
+		String strFilter = KEY_CREATED_URL + "=" + "\""
+				+ urlobject.getCreatedUrl() + "\"";
 
 		ContentValues newValues = new ContentValues();
 		newValues.put(KEY_ORIGINAL_URl, urlobject.getOriginalUrl());
@@ -87,9 +84,9 @@ public class UrlDataBaseAdapter {
 	}
 
 	public Cursor getAllEntries() {
-		return db.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_ORIGINAL_URl,
-				KEY_CREATED_URL}, null, null,
-				null, null, null);
+		return db.query(DATABASE_TABLE, new String[] { KEY_ID,
+				KEY_ORIGINAL_URl, KEY_CREATED_URL }, null, null, null, null,
+				null);
 	}
 
 	public ArrayList<UrlObject> getAllEntriesParsed() {
@@ -106,7 +103,7 @@ public class UrlDataBaseAdapter {
 		cursor.close();
 		return list;
 	}
-	
+
 	private static class myDbHelper extends SQLiteOpenHelper {
 		public myDbHelper(Context context, String name, CursorFactory factory,
 				int version) {

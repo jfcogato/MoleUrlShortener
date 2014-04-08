@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:drawable/picture_frame" >
+    android:layout_height="70dip"
+    android:background="@android:drawable/picture_frame"
+    android:gravity="center" >
 
     <TextView
         android:id="@+id/original_url_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginLeft="@dimen/url_item_list_margin"
+        android:layout_weight="1"
         android:textSize="@dimen/url_item_list_text_size" />
 
     <FrameLayout
         android:layout_width="1dip"
         android:layout_height="fill_parent"
-        android:background="@android:color/darker_gray"
         android:layout_marginLeft="@dimen/url_item_list_margin"
-        android:layout_marginRight="@dimen/url_item_list_margin" >
+        android:layout_marginRight="@dimen/url_item_list_margin"
+        android:background="@android:color/darker_gray" >
     </FrameLayout>
 
     <TextView
         android:id="@+id/created_url_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_marginRight="@dimen/url_item_list_margin"
+        android:layout_weight="1"
         android:textSize="@dimen/url_item_list_text_size" />
 
 </LinearLayout>
