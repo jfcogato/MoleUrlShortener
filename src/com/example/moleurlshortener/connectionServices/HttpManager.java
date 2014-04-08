@@ -110,11 +110,11 @@ public class HttpManager {
 	public static UrlObject SendUrl(Context ctx, String originalUrl,
 			int typeSelected) {
 
-		// This is a fake, the final feature will be send the original url to
+		// This is a fake, the final feature will send the original url to
 		// the servers, moleserver or goo.gl to create the url. But for now we
 		// made it with a random number.
 
-		// This will call httpclient, and after we will get the data for the
+		// This will call httpclient, and after that, we will get the data for the
 		// response, parse it with gson and create the object to return
 
 		String createdUrl = "";

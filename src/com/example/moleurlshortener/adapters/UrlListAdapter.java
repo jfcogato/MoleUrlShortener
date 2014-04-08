@@ -82,7 +82,9 @@ public class UrlListAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				final ViewHolder holder = (ViewHolder) v.getTag();
-				((MainActivity) mContext).createDialog(holder.originalUrl.getText().toString(), holder.createdUrl.getText().toString());
+				((MainActivity) mContext).createDialog(holder.originalUrl
+						.getText().toString(), holder.createdUrl.getText()
+						.toString());
 			}
 		});
 

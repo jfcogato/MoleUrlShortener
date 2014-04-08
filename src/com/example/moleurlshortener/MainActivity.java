@@ -145,7 +145,7 @@ public class MainActivity extends Activity {
 					e.printStackTrace();
 				}
 
-				// Sending message to the server to create the shorter url
+				// Sending message to the server to create the compressed url
 				UrlObject urlObjectReturned = HttpManager.SendUrl(
 						MainActivity.this.getApplicationContext(), url, type);
 

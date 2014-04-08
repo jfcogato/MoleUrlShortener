@@ -32,16 +32,16 @@
 
         <ImageView
             android:id="@+id/google_button"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
+            android:layout_width="@dimen/buttons_size"
+            android:layout_height="@dimen/buttons_size"
             android:layout_alignLeft="@+id/editText1"
             android:layout_below="@+id/editText1"
             android:src="@drawable/ic_google_grey" />
 
         <ImageView
             android:id="@+id/mole_button"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
+            android:layout_width="@dimen/buttons_size"
+            android:layout_height="@dimen/buttons_size"
             android:layout_below="@+id/editText1"
             android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/textView1"
@@ -49,8 +49,8 @@
 
         <ImageButton
             android:id="@+id/send_button"
-            android:layout_width="48dip"
-            android:layout_height="48dip"
+            android:layout_width="@dimen/buttons_size"
+            android:layout_height="@dimen/buttons_size"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/editText1"
             android:src="@android:drawable/ic_menu_send" />

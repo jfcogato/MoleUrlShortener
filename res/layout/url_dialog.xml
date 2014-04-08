@@ -9,25 +9,25 @@
         android:id="@+id/original_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dip"
-        android:paddingRight="16dip"
-        android:paddingTop="8dip"
-        android:textSize="16dip" />
+        android:paddingLeft="@dimen/dialog_margins"
+        android:paddingRight="@dimen/dialog_margins"
+        android:paddingTop="@dimen/dialog_margins"
+        android:textSize="@dimen/dialog_text_size" />
 
     <TextView
         android:id="@+id/created_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dip"
-        android:paddingRight="16dip"
-        android:paddingTop="8dip"
-        android:textSize="16dip" />
+        android:paddingLeft="@dimen/dialog_margins"
+        android:paddingRight="@dimen/dialog_margins"
+        android:paddingTop="@dimen/dialog_margins"
+        android:textSize="@dimen/dialog_text_size" />
 
     <Button
         android:id="@+id/share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dip"
+        android:layout_margin="@dimen/dialog_margins"
         android:text="@string/share" />
 
 </LinearLayout>
