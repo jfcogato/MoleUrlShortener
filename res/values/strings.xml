@@ -9,6 +9,7 @@
     <string name="sending_message">Please wait&#8230;</string>
     <string name="no_compersor">Please select a compresor</string>
     <string name="sending_error">Error sending url to server</string>
+    <string name="invalid_url">Invalid url</string>
 
     <integer name="standard_port">8080</integer>
 

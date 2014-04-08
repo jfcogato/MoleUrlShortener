@@ -23,6 +23,7 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -85,7 +86,14 @@ public class MainActivity extends Activity {
 				} else {
 					String url = ((EditText) MainActivity.this
 							.findViewById(R.id.editText1)).getText().toString();
-					sendData(url, buttonSelected);
+
+					if (URLUtil.isValidUrl(url)) {
+						sendData(url, buttonSelected);
+					} else {
+						Toast.makeText(getApplicationContext(),
+								getString(R.string.invalid_url),
+								Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 		});
