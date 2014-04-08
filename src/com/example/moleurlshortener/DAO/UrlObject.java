@@ -1,6 +1,10 @@
 package com.example.moleurlshortener.DAO;
 
-public class UrlObject {
+import java.io.Serializable;
+
+public class UrlObject implements Serializable {
+
+	private static final long serialVersionUID = -7060210544600464481L;
 
 	private String originalUrl;
 	private String createdUrl;
