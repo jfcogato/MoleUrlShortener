@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="mole_server">http://moleurl.com/</string>
+    <string name="google_server">http://moleurl.com/</string>
+
+</resources>

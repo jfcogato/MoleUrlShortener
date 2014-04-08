@@ -36,7 +36,7 @@
             android:layout_height="48dip"
             android:layout_alignLeft="@+id/editText1"
             android:layout_below="@+id/editText1"
-            android:src="@drawable/ic_google" />
+            android:src="@drawable/ic_google_grey" />
 
         <ImageView
             android:id="@+id/mole_button"

@@ -4,5 +4,12 @@
     <string name="app_name">MoleUrlShortener</string>
     <string name="action_settings">Settings</string>
     <string name="enter_url">Type url:</string>
+    <string name="sending_title">Creating url</string>
+    <string name="sending_message">Please wait&#8230;</string>
+    <string name="no_compersor">Please select a compresor</string>
+
+    <integer name="standard_port">8080</integer>
+
+    <string name="standard_protocol">http</string>
 
 </resources>
